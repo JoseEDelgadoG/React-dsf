@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { balls } from '../components/balls';
+import ItemList from './ItemList';
 
-export const ItemListContainer = ({ saludo }) => {
+const ItemListContainer = () => {
+
+    const [objeto, setObjeto] = useState([]);
+
+    // useEffect    
+    useEffect(() => {
+        setTimeout(() => {
+          setObjeto(balls);
+        }, 2000);
+    });
+
+    console.log(objeto);
+
     return (
         <div>
-            <h2> { saludo } </h2>
+            <ItemList Items={objeto} />
         </div>
     )
 }
+
+export default ItemListContainer;
