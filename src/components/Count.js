@@ -20,9 +20,47 @@ export const Count = () => {
         }
         };
 
-    return (
-        <div>
-            <h1>Contador</h1>
-        </div>
-    )
-}
+        return (
+            <Card className="App">
+                <Card.Body>
+                <ListGroup className="list-group-flush">
+                    <ListGroupItem>
+                    STOCK: {numero} COMPRA: {cant}
+                    </ListGroupItem>
+                </ListGroup>
+                <div className="container">
+                    <div className="row align-items-start">
+                        <div className="col">
+                        <CartWidget />
+                    </div>
+                    <div className="col">
+                        <Button onClick={handleIncrement} variant="outline-success">
+                        +
+                        </Button>
+                    </div>
+                    <div className="col">
+                        <Button onClick={handleDecrement} variant="outline-primary">
+                        -
+                        </Button>
+                    </div>
+                    </div>
+                </div>
+        
+                <Button
+                    variant="primary"
+                    onClick={() => props.paramOnAdd(cant, props.id)}
+                    type="submit"
+                >
+                    AGREGAR
+                </Button>
+                <Link className="Link" to="/Cart" disabled={cart.length === 0 ? "true" : "false"}>
+                    <Button >
+                    TERMINAR COMPRA
+                    </Button>
+                </Link>
+                </Card.Body>
+            </Card>
+            );
+        }
+        
+        export default Count;
